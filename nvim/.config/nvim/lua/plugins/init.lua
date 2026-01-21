@@ -357,7 +357,10 @@ return {
       require("toggleterm").setup({
         open_mapping = [[<C-j>]],
         direction = 'horizontal',
-        size = 15,
+        size = function()
+          return vim.o.lines * 0.5
+        end,
+        shell = 'zellij',
       })
     end,
   },
