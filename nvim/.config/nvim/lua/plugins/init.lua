@@ -39,6 +39,15 @@ return {
       }
       vim.lsp.enable('ltex')
       
+      -- Go
+      vim.lsp.config.gopls = {
+        cmd = { 'gopls' },
+        filetypes = { 'go', 'gomod', 'gowork', 'gotmpl' },
+        root_markers = { 'go.mod', '.git' },
+        capabilities = capabilities,
+      }
+      vim.lsp.enable('gopls')
+      
       -- Keybindings
       -- Smart gd: go to definition from usage, show references from definition
       vim.keymap.set('n', 'gd', function()
@@ -123,7 +132,7 @@ return {
     build = ":TSUpdate",
     main = "nvim-treesitter.config",
     opts = {
-      ensure_installed = { "lua", "vim", "javascript", "typescript", "python" },
+      ensure_installed = { "lua", "vim", "javascript", "typescript", "python", "go" },
       sync_install = false,
       auto_install = true,
       highlight = { enable = true },
