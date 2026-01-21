@@ -21,6 +21,7 @@ vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
 vim.opt.termguicolors = false
 vim.opt.background = "dark"
+vim.opt.clipboard = "unnamedplus"
 
 -- Load plugins
 require("lazy").setup("plugins")
