@@ -19,7 +19,7 @@ vim.opt.relativenumber = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
 vim.opt.tabstop = 2
-vim.opt.termguicolors = false
+vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.clipboard = "unnamedplus"
 

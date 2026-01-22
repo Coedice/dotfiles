@@ -1,4 +1,37 @@
 return {
+  -- Colorscheme
+  {
+    "navarasu/onedark.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require('onedark').setup {
+        style = 'dark',
+        transparent = false,
+        term_colors = true,
+        ending_tildes = false,
+        cmp_itemkind_reverse = false,
+        toggle_style_key = nil,
+        toggle_style_list = {'dark', 'darker', 'cool', 'deep', 'warm', 'warmer', 'light'},
+        code_style = {
+          comments = 'italic',
+          keywords = 'none',
+          functions = 'none',
+          strings = 'none',
+          variables = 'none'
+        },
+        lualine = {
+          transparent = false,
+        },
+        diagnostics = {
+          darker = true,
+          background = true,
+        },
+      }
+      require('onedark').load()
+    end,
+  },
+
   -- LSP Configuration
   {
     "neovim/nvim-lspconfig",
@@ -348,7 +381,16 @@ return {
   {
     "lewis6991/gitsigns.nvim",
     config = function()
-      require('gitsigns').setup()
+      require('gitsigns').setup({
+        current_line_blame = true, -- Toggle with `:Gitsigns toggle_current_line_blame`
+        current_line_blame_opts = {
+          virt_text = true,
+          virt_text_pos = 'eol', -- 'eol' | 'overlay' | 'right_align'
+          delay = 1000,
+          ignore_whitespace = false,
+        },
+        current_line_blame_formatter = ' <author>, <author_time:%Y-%m-%d> - <summary>',
+      })
     end,
   },
 
@@ -371,7 +413,7 @@ return {
         size = function()
           return vim.o.lines * 0.5
         end,
-        shell = 'zellij',
+        shell = '~/.config/zellij/zellij-toggleterm.sh',
       })
     end,
   },
