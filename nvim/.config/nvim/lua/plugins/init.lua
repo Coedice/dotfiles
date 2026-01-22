@@ -6,7 +6,7 @@ return {
     priority = 1000,
     config = function()
       require('onedark').setup {
-        style = 'dark',
+        style = 'darker',
         transparent = false,
         term_colors = true,
         ending_tildes = false,
