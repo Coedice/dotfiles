@@ -394,6 +394,44 @@ return {
     end,
   },
 
+  -- Fugitive for git commands
+  {
+    "tpope/vim-fugitive",
+    lazy = false,
+    config = function()
+      -- Keybinding for git diff
+      vim.keymap.set('n', '<leader>gd', '<cmd>Gdiff<cr>', { desc = 'Git diff' })
+      
+      -- When starting diff, focus the working tree side
+      vim.api.nvim_create_autocmd('BufWinEnter', {
+        pattern = '*',
+        callback = function()
+          -- Check if we're in a diff with fugitive buffers
+          local wins = vim.api.nvim_list_wins()
+          local has_fugitive = false
+          local working_win = nil
+          
+          for _, win in ipairs(wins) do
+            local buf = vim.api.nvim_win_get_buf(win)
+            local name = vim.api.nvim_buf_get_name(buf)
+            if name:match('fugitive://') then
+              has_fugitive = true
+            else
+              working_win = win
+            end
+          end
+          
+          -- If we found fugitive buffers and a working tree, switch to working tree
+          if has_fugitive and working_win then
+            vim.defer_fn(function()
+              vim.api.nvim_set_current_win(working_win)
+            end, 100)
+          end
+        end,
+      })
+    end,
+  },
+
   -- Which-key
   {
     "folke/which-key.nvim",
