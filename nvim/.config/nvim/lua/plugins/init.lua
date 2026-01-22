@@ -229,7 +229,7 @@ return {
       vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Live grep' })
       
       -- Project switcher: wipes buffers, cd into project, then prompts for a file in that project
-      vim.keymap.set('n', '<leader>fp', function()
+      vim.keymap.set('n', '<C-r>', function()
         local telescope = require('telescope')
         local action_state = require('telescope.actions.state')
         local actions = require('telescope.actions')
@@ -248,8 +248,10 @@ return {
                 -- Change directory to the chosen project
                 vim.cmd('cd ' .. vim.fn.fnameescape(selection.value))
 
-                -- Prompt to pick a file inside that project
-                builtin_local.find_files({ cwd = selection.value })
+                -- Open nvim-tree full screen with new project root
+                require('nvim-tree.api').tree.change_root(selection.value)
+                require('nvim-tree.api').tree.open()
+                vim.cmd('NvimTreeFocus')
               end
             end)
             return true
