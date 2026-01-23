@@ -598,6 +598,16 @@ return {
     end,
   },
 
+  -- Comment.nvim
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+    config = function()
+      require("Comment").setup()
+      vim.keymap.set('v', '<C-/>', '<Plug>(comment_toggle_linewise_visual)', { desc = 'Toggle comment selection' })
+    end,
+  },
+
   -- Highlight other uses of word under cursor
   {
     "RRethy/vim-illuminate",
