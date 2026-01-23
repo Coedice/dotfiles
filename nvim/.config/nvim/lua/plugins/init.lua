@@ -594,6 +594,36 @@ return {
     end,
   },
 
+  -- Highlight other uses of word under cursor
+  {
+    "RRethy/vim-illuminate",
+    event = "VeryLazy",
+    config = function()
+      require('illuminate').configure({
+        -- Delay in milliseconds before highlighting
+        delay = 100,
+        -- Underline instead of highlight
+        under_cursor = true,
+        -- Only highlight when not in insert mode
+        modes_allowlist = { 'n', 'v' },
+        -- Filetypes to disable
+        filetypes_denylist = {
+          'dirvish',
+          'fugitive',
+          'alpha',
+          'NvimTree',
+          'toggleterm',
+        },
+        -- Highlight groups for different types
+        providers = {
+          'lsp',
+          'treesitter',
+          'regex',
+        },
+      })
+    end,
+  },
+
   -- LazyGit
   {
     "kdheepak/lazygit.nvim",
