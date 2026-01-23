@@ -23,5 +23,29 @@ vim.opt.termguicolors = true
 vim.opt.background = "dark"
 vim.opt.clipboard = "unnamedplus"
 
+-- Auto-reload files when changed externally
+vim.opt.autoread = true
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+
+-- Auto-reload when focus is gained or buffer is entered
+vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+  callback = function()
+    if vim.fn.getcmdwintype() == "" then
+      vim.cmd("checktime")
+    end
+  end,
+  pattern = "*",
+})
+
+-- Notification for external changes
+vim.api.nvim_create_autocmd({ "FileChangedShellPost" }, {
+  callback = function()
+    vim.notify("File reloaded due to external changes", vim.log.levels.INFO)
+  end,
+  pattern = "*",
+})
+
 -- Load plugins
 require("lazy").setup("plugins")
