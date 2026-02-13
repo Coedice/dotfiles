@@ -189,13 +189,13 @@ return {
       }
       local hooks = require("ibl.hooks")
       hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-        vim.api.nvim_set_hl(0, "RainbowRed",    { bg = "#4f2629" })
-        vim.api.nvim_set_hl(0, "RainbowYellow", { bg = "#4a3f28" })
-        vim.api.nvim_set_hl(0, "RainbowBlue",   { bg = "#1f324a" })
-        vim.api.nvim_set_hl(0, "RainbowOrange", { bg = "#4a3723" })
-        vim.api.nvim_set_hl(0, "RainbowGreen",  { bg = "#263f32" })
-        vim.api.nvim_set_hl(0, "RainbowViolet", { bg = "#3f274d" })
-        vim.api.nvim_set_hl(0, "RainbowCyan",   { bg = "#1e3f43" })
+        vim.api.nvim_set_hl(0, "RainbowRed",    { bg = "#352125" })
+        vim.api.nvim_set_hl(0, "RainbowYellow", { bg = "#332E25" })
+        vim.api.nvim_set_hl(0, "RainbowBlue",   { bg = "#1D2736" })
+        vim.api.nvim_set_hl(0, "RainbowOrange", { bg = "#332A22" })
+        vim.api.nvim_set_hl(0, "RainbowGreen",  { bg = "#212E2A" })
+        vim.api.nvim_set_hl(0, "RainbowViolet", { bg = "#2D2237" })
+        vim.api.nvim_set_hl(0, "RainbowCyan",   { bg = "#1D2E32" })
       end)
       require("ibl").setup({
         indent = { highlight = highlight, char = '' },
