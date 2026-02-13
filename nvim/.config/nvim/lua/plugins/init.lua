@@ -584,7 +584,6 @@ return {
         size = function()
           return vim.o.lines * 0.5
         end,
-        shell = '~/.config/zellij/zellij-toggleterm.sh',
       })
     end,
   },
