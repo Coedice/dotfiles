@@ -11,20 +11,13 @@ This repository is organized into multiple packages, each containing dotfiles fo
 - **nvim/** - Neovim configuration
 - **config/** - Other application configs (starship, htop, ranger)
 
-## Installation
+## Required Installations
 
-Install GNU Stow:
-
-```bash
-# macOS
-brew install stow
-
-# Linux (Debian/Ubuntu)
-sudo apt install stow
-
-# Linux (Fedora)
-sudo dnf install stow
-```
+- GNU Stow
+- Fish shell
+- Starship
+- LazyGit
+- Ripgrep
 
 Clone this dotfiles repo, then use Stow to create symlinks:
 
