@@ -31,7 +31,7 @@ Clone this dotfiles repo, then use Stow to create symlinks:
 ```bash
 git clone <this repo>
 cd path/to/repo
-stow */
+stow -t ~ */ --adopt
 ```
 
 ## Unstow
