@@ -324,55 +324,10 @@ return {
         },
         view = {
           preserve_window_proportions = true,
+          width = "100%",
         },
       })
       vim.keymap.set('n', '<C-n>', ':NvimTreeToggle<CR>', { desc = 'Toggle file explorer' })
-    end,
-  },
-
-  -- Bufferline
-  {
-    "akinsho/bufferline.nvim",
-    dependencies = "nvim-tree/nvim-web-devicons",
-    config = function()
-      local bufferline = require("bufferline")
-      bufferline.setup({
-        highlights = {
-          buffer_selected = {
-            fg = "#000000", bg = "#ffffff", bold = true, italic = false, underline = false,
-            ctermfg = 0, ctermbg = 15, cterm = { "bold" },
-          },
-          background = {
-            fg = "#888888", bg = "#000000", ctermfg = 244, ctermbg = 0,
-          },
-          fill = { bg = "#000000", ctermbg = 0 },
-          tab_selected = {
-            fg = "#000000", bg = "#ffffff", bold = true, italic = false, underline = false,
-            ctermfg = 0, ctermbg = 15, cterm = { "bold" },
-          },
-        },        options = {
-          show_buffer_close_icons = true,
-        },
-      })
-
-      -- Buffer/tabline navigation (Tab / Shift-Tab)
-      vim.keymap.set('n', '<Tab>', function() bufferline.cycle(1) end, { desc = 'Next buffer' })
-      vim.keymap.set('n', '<S-Tab>', function() bufferline.cycle(-1) end, { desc = 'Prev buffer' })
-      vim.keymap.set('n', '<C-w>', function()
-        -- Save if modified
-        if vim.bo.modified then
-          vim.cmd('silent! write')
-        end
-        local bufs = vim.fn.getbufinfo({ buflisted = 1 })
-        if #bufs <= 1 then
-          -- Last buffer: create new empty buffer, then delete the old one
-          vim.cmd('enew')
-          vim.cmd('silent! bwipeout #')
-        else
-          -- Multiple buffers: go to previous, then delete the one we were on
-          vim.cmd('bp | bd #')
-        end
-      end, { desc = 'Delete buffer' })
     end,
   },
 
